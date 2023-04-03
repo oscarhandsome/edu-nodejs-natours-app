@@ -18,7 +18,7 @@ router.use(authController.isLoggedIn);
 
 router.get(
   '/',
-  bookingController.createBookingCheckout,
+  // bookingController.createBookingCheckout,
   authController.isLoggedIn,
   viewsController.getOverview
 );

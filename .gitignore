@@ -1,5 +1,6 @@
 # .vscode
 # .history
-.cache
 node_modules/
+.cache
 *.env
+.cache/

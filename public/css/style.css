@@ -1222,7 +1222,8 @@ body {
   margin: 0 auto;
 }
 
-.login-form {
+.login-form,
+.signup-form {
   margin: 0 auto;
   max-width: 55rem;
   background-color: #fff;
@@ -1261,6 +1262,15 @@ body {
 }
 .form__input::-webkit-input-placeholder {
   color: #bbb;
+}
+
+.form__input--error {
+  border: solid 1px red !important;
+}
+
+.validation-error {
+  top: 90px;
+  color: red;
 }
 
 .form__group:not(:last-child) {

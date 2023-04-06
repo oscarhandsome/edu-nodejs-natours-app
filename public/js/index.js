@@ -2,6 +2,7 @@
 import '@babel/polyfill';
 import { displayMap } from './mapbox';
 import { login, logout } from './login';
+import { signup } from './signup';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 import { showAlert } from './alerts';
@@ -9,6 +10,7 @@ import { showAlert } from './alerts';
 // DOM ELEMENTS
 const mapNox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
+const signUpForm = document.querySelector('.form--signup');
 const logOutBtn = document.querySelector('.nav_el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
@@ -31,6 +33,38 @@ if (loginForm)
   });
 
 if (logOutBtn) logOutBtn.addEventListener('click', logout);
+
+if (signUpForm)
+  signUpForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('passwordConfirm').value;
+
+    try {
+      const res = await signup(name, email, password, passwordConfirm);
+      console.log(res);
+      if (res && res.error) {
+        for (let value of Object.keys(res.error.errors)) {
+          document.getElementById(value).classList.add('form__input--error');
+          document.getElementById(value).nextElementSibling.innerHTML =
+            res.error.errors[value].message;
+        }
+
+        setTimeout(() => {
+          for (let value of Object.keys(res.error.errors)) {
+            document
+              .getElementById(value)
+              .classList.remove('form__input--error');
+            document.getElementById(value).nextElementSibling.innerHTML = '';
+          }
+        }, 5000);
+      }
+    } catch (error) {
+      console.error('signUpForm', error);
+    }
+  });
 
 if (userDataForm)
   userDataForm.addEventListener('submit', e => {

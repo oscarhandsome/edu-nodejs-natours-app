@@ -44,7 +44,7 @@ if (signUpForm)
 
     try {
       const res = await signup(name, email, password, passwordConfirm);
-      console.log(res);
+      // console.log(res);
       if (res && res.error) {
         for (let value of Object.keys(res.error.errors)) {
           document.getElementById(value).classList.add('form__input--error');

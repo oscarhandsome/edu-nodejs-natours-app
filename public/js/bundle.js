@@ -8470,9 +8470,9 @@ var signup = /*#__PURE__*/function () {
           res = _context.sent;
           if (res.data.status === 'success') {
             (0, _alerts.showAlert)('success', 'Please check your email!');
-            //   window.setTimeout(() => {
-            //     location.assign('/');
-            //   }, 1500);
+            window.setTimeout(function () {
+              location.assign('/');
+            }, 1500);
           }
           _context.next = 11;
           break;
@@ -8777,7 +8777,7 @@ if (signUpForm) signUpForm.addEventListener('submit', /*#__PURE__*/function () {
           return (0, _signup.signup)(name, email, password, passwordConfirm);
         case 8:
           res = _context.sent;
-          console.log(res);
+          // console.log(res);
           if (res && res.error) {
             for (_i = 0, _Object$keys = Object.keys(res.error.errors); _i < _Object$keys.length; _i++) {
               value = _Object$keys[_i];
@@ -8792,17 +8792,17 @@ if (signUpForm) signUpForm.addEventListener('submit', /*#__PURE__*/function () {
               }
             }, 5000);
           }
-          _context.next = 16;
+          _context.next = 15;
           break;
-        case 13:
-          _context.prev = 13;
+        case 12:
+          _context.prev = 12;
           _context.t0 = _context["catch"](5);
           console.error('signUpForm', _context.t0);
-        case 16:
+        case 15:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[5, 13]]);
+    }, _callee, null, [[5, 12]]);
   }));
   return function (_x) {
     return _ref.apply(this, arguments);
